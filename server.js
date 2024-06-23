@@ -22,6 +22,10 @@ const PORT = process.env.PORT || 4500;
 // Serve static files from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get("/", (req, res) => {
+  res.send("ok");
+});
+
 cron.schedule('41 23 * * *', async () => {
     try {
         const quoteData = await fetchQuote();
